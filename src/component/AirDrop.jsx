@@ -12,14 +12,11 @@ function Airdrop() {
     }
 
     try {
-      // Create a connection to Solana's Devnet
       const connection = new Connection(clusterApiUrl('devnet'), 'confirmed');
       const publicKey = new PublicKey(solanaAddress);
       
-      // Request an airdrop of 1 SOL (1 SOL = LAMPORTS_PER_SOL lamports)
       const airdropSignature = await connection.requestAirdrop(publicKey, LAMPORTS_PER_SOL);
-
-      // Confirm the transaction
+    
       setStatus(`1 SOL airdropped to ${solanaAddress}`);
     } catch (error) {
       console.error('Error during airdrop:', error);
